@@ -2,15 +2,17 @@ package com.ecommerce.eCommerce.model;
 
 import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
+
 import java.util.List;
 
 @Component
 @Entity
+@Table(name = "Order_Table")
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long orderId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long orderId;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -24,11 +26,11 @@ public class Order {
     )
     private List<Product> products;
 
-    public long getOrderId() {
+    public Long getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(long orderId) {
+    public void setOrderId(Long orderId) {
         this.orderId = orderId;
     }
 
